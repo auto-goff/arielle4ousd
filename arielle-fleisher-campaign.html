@@ -451,7 +451,7 @@
     font-weight: 500;
   }
 
-  /* CTA */
+  /* CTA / GET INVOLVED */
   .cta-section {
     background: var(--ink);
     padding: 6rem 0;
@@ -461,11 +461,11 @@
   .cta-section .section-label { color: var(--gold); display: block; }
   .cta-section .section-title { color: var(--white); text-align: center; }
 
-  .cta-section p {
+  .cta-section .section-intro {
     color: rgba(255,255,255,0.6);
     font-size: 1.05rem;
-    max-width: 500px;
-    margin: 1rem auto 3rem;
+    max-width: 620px;
+    margin: 0.75rem auto 2.5rem;
     font-weight: 300;
     line-height: 1.7;
   }
@@ -475,6 +475,231 @@
     gap: 1.5rem;
     justify-content: center;
     flex-wrap: wrap;
+  }
+
+  /* GET INVOLVED FORM */
+  .get-involved-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .get-involved-left {}
+
+  .get-involved-form {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 2.5rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-field.full { grid-column: 1 / -1; }
+
+  .form-field label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .form-field input,
+  .form-field select {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 2px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    transition: border-color 0.2s, background 0.2s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  .form-field input::placeholder { color: rgba(255,255,255,0.25); }
+
+  .form-field input:focus,
+  .form-field select:focus {
+    border-color: var(--gold);
+    background: rgba(255,255,255,0.09);
+  }
+
+  .form-field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px;
+    padding-right: 2.5rem;
+    color: rgba(255,255,255,0.6);
+    cursor: pointer;
+  }
+
+  .form-field select option {
+    background: #2a2a2a;
+    color: var(--white);
+  }
+
+  /* Checkboxes */
+  .form-checkboxes {
+    margin-bottom: 2rem;
+  }
+
+  .form-checkboxes-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .checkbox-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.65rem;
+    cursor: pointer;
+  }
+
+  .checkbox-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    border-radius: 2px;
+    background: rgba(255,255,255,0.05);
+    cursor: pointer;
+    margin-top: 2px;
+    transition: border-color 0.2s, background 0.2s;
+    position: relative;
+  }
+
+  .checkbox-item input[type="checkbox"]:checked {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+
+  .checkbox-item input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 4px; top: 1px;
+    width: 6px; height: 10px;
+    border: 2px solid var(--ink);
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+  }
+
+  .checkbox-item span {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .form-submit {
+    background: var(--gold);
+    color: var(--ink);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    width: 100%;
+  }
+
+  .form-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 3rem 2rem;
+    color: var(--gold-light);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .form-success p.sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    font-style: normal;
+    margin-top: 0.75rem;
+    font-weight: 300;
+  }
+
+  /* Right side donate block */
+  .get-involved-right {
+    padding-top: 1rem;
+  }
+
+  .donate-block {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 2rem 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .donate-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .donate-block p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .donate-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  .donate-block p {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
   }
 
   .btn-gold {
@@ -492,6 +717,49 @@
   }
 
   .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .kickoff-block {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 2rem 2.5rem;
+  }
+
+  .kickoff-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+    font-style: italic;
+  }
+
+  .kickoff-block .event-detail {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+
+  .kickoff-block p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    line-height: 1.6;
+    margin-top: 0.75rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 800px) {
+    .get-involved-layout {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
 
   .btn-ghost {
     border: 1.5px solid rgba(255,255,255,0.3);
@@ -814,7 +1082,7 @@
     <li><a href="#meet">About</a></li>
     <li><a href="#priorities">Platform</a></li>
     <li><a href="#in-action">Arielle in Action</a></li>
-    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeDQwoWcHOX34CUBvxQiuMFPwNuhMIxelsJNK6B3R3dOZMEpQ/viewform" target="_blank" rel="noopener">Get Involved</a></li>
+    <li><a href="#get-involved">Get Involved</a></li>
     <li><a href="https://secure.actblue.com/donate/arielleforoakland" class="nav-cta" target="_blank" rel="noopener">Donate</a></li>
   </ul>
 </nav>
@@ -829,7 +1097,7 @@
     <p class="hero-tagline">OUSD Parent & Policy Expert. Ready to Lead.</p>
     <div class="hero-buttons">
       <a href="https://secure.actblue.com/donate/arielleforoakland" class="btn-primary" target="_blank" rel="noopener">Donate</a>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeDQwoWcHOX34CUBvxQiuMFPwNuhMIxelsJNK6B3R3dOZMEpQ/viewform?usp=send_form" class="btn-outline" target="_blank" rel="noopener">Get Involved</a>
+      <a href="#get-involved" class="btn-outline">Get Involved</a>
     </div>
   </div>
   <div class="hero-right">
@@ -903,7 +1171,7 @@
       <div class="priority-card">
         <div class="priority-number">01</div>
         <h3 class="priority-title">Fix the Budget. For Real This Time.</h3>
-        <p class="priority-desc">Oakland Unified is once again facing serious financial challenges, just months after regaining local control. Rather than making the structural decisions required to stabilize the district, the current board has repeatedly chosen short-term fixes. That ends here. Arielle will bring rigorous analysis, the willingness to make tough, necessary decisions and a commitment to working across differences, and staying grounded in equity.</p>
+        <p class="priority-desc">OUSD is once again facing serious financial challenges, just months after regaining local control. Rather than making the structural decisions required to stabilize the district, the current board has repeatedly chosen short-term fixes. That ends here. Arielle will bring rigorous analysis, the willingness to make tough, necessary decisions and a commitment to working across differences, and staying grounded in equity.</p>
       </div>
       <div class="priority-card">
         <div class="priority-number">02</div>
@@ -1087,22 +1355,25 @@
   </div>
 </section>
 
-<!-- CTA -->
+<!-- GET INVOLVED -->
 <section class="cta-section" id="get-involved">
   <div class="container">
     <p class="section-label">Get Involved</p>
-    <h2 class="section-title">Help Arielle Win District 2</h2>
-    <p>Whether you can knock doors, share on social, or chip in — every bit of support makes the difference in a local race like this.</p>
+    <h2 class="section-title">Help Arielle Win <span style="color:var(--gold);">District 2</span></h2>
+    <p class="section-intro">Whether you can knock doors, share on social, or chip in — every bit of support makes the difference in a local race like this.</p>
+
     <div class="cta-buttons">
+      <a href="http://eepurl.com/iX9T6Y_7mK" class="btn-ghost" target="_blank" rel="noopener">Get Involved</a>
       <a href="https://secure.actblue.com/donate/arielleforoakland" class="btn-gold" target="_blank" rel="noopener">Donate Now</a>
-      <a href="https://forms.gle/sMcLn6s2A5PUgDRq7" class="btn-ghost" target="_blank" rel="noopener">Get Involved</a>
     </div>
   </div>
 </section>
 
+
+
 <!-- FOOTER -->
 <footer>
-  <p>Paid for by Arielle Fleisher for Oakland School Board 2026, FPPC No. 1490303, 4900 Shattuck Ave. #22746, Oakland, CA 94609 · <a href="mailto:arielle.for.oakland.schools@gmail.com">arielle.for.oakland.schools@gmail.com</a></p>
+  <p>Paid for by Arielle Fleisher for Oakland School Board 2026, FPPC No. 1490303, 4900 Shattuck Ave. #22746, Oakland, CA 94609 · <a href="mailto:arielle@arielleforoakland.com">arielle@arielleforoakland.com</a></p>
   <p style="margin-top:0.5rem;">© 2026 Arielle Fleisher · All rights reserved</p>
 </footer>
 

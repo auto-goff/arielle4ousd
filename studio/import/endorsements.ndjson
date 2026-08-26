@@ -1,0 +1,21 @@
+{"_id":"endorsement-charlene-wang","_type":"endorsement","name":"Charlene Wang","role":"Oakland City Councilmember, District 2","featured":true,"published":true,"order":1}
+{"_id":"endorsement-libby-schaaf","_type":"endorsement","name":"Libby Schaaf","role":"Former Oakland Mayor","featured":true,"published":true,"order":2}
+{"_id":"endorsement-loren-taylor","_type":"endorsement","name":"Loren Taylor","role":"Former Oakland City Councilmember, District 6","featured":true,"published":true,"order":3}
+{"_id":"endorsement-danny-wan","_type":"endorsement","name":"Danny Wan","role":"Former Oakland City Councilmember, District 2","featured":true,"published":true,"order":4}
+{"_id":"endorsement-pat-kernighan","_type":"endorsement","name":"Pat Kernighan","role":"Former Oakland City Councilmember, District 2","featured":false,"published":true,"order":5}
+{"_id":"endorsement-aimee-eng","_type":"endorsement","name":"Aimee Eng","role":"Former OUSD Board Member, District 2","featured":false,"published":true,"order":6}
+{"_id":"endorsement-bob-spencer","_type":"endorsement","name":"Bob Spencer","role":"Former OUSD Board Member, District 2","featured":false,"published":true,"order":7}
+{"_id":"endorsement-jody-london","_type":"endorsement","name":"Jody London","role":"Former OUSD Board Member, District 1","featured":false,"published":true,"order":8}
+{"_id":"endorsement-sam-davis","_type":"endorsement","name":"Sam Davis","role":"Former OUSD Board Member, District 1","featured":false,"published":true,"order":9}
+{"_id":"endorsement-gary-yee","_type":"endorsement","name":"Gary Yee","role":"Former OUSD Board Member, District 4","featured":false,"published":true,"order":10}
+{"_id":"endorsement-jorge-lerma","_type":"endorsement","name":"Jorge Lerma","role":"Former OUSD Board Member, District 5","featured":false,"published":true,"order":11}
+{"_id":"endorsement-l-k-monroe","_type":"endorsement","name":"L.K. Monroe","role":"Former Alameda County Superintendent of Schools","featured":false,"published":true,"order":12}
+{"_id":"endorsement-hon-ken-berrick","_type":"endorsement","name":"Hon. Ken Berrick","role":"Alameda County Board of Education, Trustee Area 3","featured":false,"published":true,"order":13}
+{"_id":"endorsement-john-jones-iii","_type":"endorsement","name":"John Jones III","role":"OUSD Parent and Community Leader","featured":false,"published":true,"order":14}
+{"_id":"endorsement-ronak-dave-okoye","_type":"endorsement","name":"Ronak Davé Okoye","role":"Past President Cleveland Elementary PTA","featured":false,"published":true,"order":15}
+{"_id":"endorsement-jen-whalen","_type":"endorsement","name":"Jen Whalen","role":"Past President Crocker Elementary PTA","featured":false,"published":true,"order":16}
+{"_id":"endorsement-pam-erickson","_type":"endorsement","name":"Pam Erickson","role":"OUSD Parent","featured":false,"published":true,"order":17}
+{"_id":"endorsement-jt-mates-muchin","_type":"endorsement","name":"JT Mates-Muchin","role":"Past President Skyline High School PTSA","featured":false,"published":true,"order":18}
+{"_id":"endorsement-kathy-teng-dwyer","_type":"endorsement","name":"Kathy Teng Dwyer","role":"Community Activist, former Executive Director of Harbor House and Co-Chair for Oakland Fund for Children and Youth","featured":false,"published":true,"order":19}
+{"_id":"endorsement-eric-hughes","_type":"endorsement","name":"Eric Hughes","role":"Co-lead, Grand Lake Neighbors Neighborhood Council","featured":false,"published":true,"order":20}
+{"_id":"endorsement-david-flack","_type":"endorsement","name":"David Flack","role":"Grand Lake Neighbors Neighborhood Council","featured":false,"published":true,"order":21}

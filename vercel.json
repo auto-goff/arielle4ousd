@@ -1,5 +1,6 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/arielle-fleisher-campaign.html" }
+    { "source": "/", "destination": "/arielle-fleisher-campaign.html" },
+    { "source": "/media", "destination": "/media.html" }
   ]
 }

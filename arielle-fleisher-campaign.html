@@ -1121,6 +1121,100 @@
     border-bottom: 1px solid var(--border);
   }
 
+  /* FEATURED ENDORSEMENTS */
+  .endorsements-featured {
+    margin: 2.5rem auto 3rem;
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .endorsement-featured-primary {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    text-align: left;
+    padding: 2rem;
+    background: var(--cream);
+    border: 1px solid var(--border);
+  }
+
+  .endorsement-featured-secondary {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .endorsement-featured-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    text-align: left;
+    width: 100%;
+  }
+
+  .endorsement-featured-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+
+  .endorsement-featured-avatar--sm {
+    width: 64px;
+    height: 64px;
+  }
+
+  .endorsement-featured-quote {
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .endorsement-featured-primary .endorsement-featured-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+  }
+
+  .endorsement-featured-card .endorsement-featured-quote {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.95rem;
+  }
+
+  .endorsement-featured-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--ink);
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .endorsement-featured-role {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 300;
+    margin-top: 0.15rem;
+  }
+
+  /* AVATAR-INITIALS FALLBACK (no photo set) */
+  .endorsement-avatar-initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--oak);
+    color: var(--white);
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+  }
+
+  .endorsement-photo.endorsement-avatar-initials { font-size: 1.9rem; }
+  .endorsement-featured-avatar.endorsement-avatar-initials { font-size: 2.4rem; }
+  .endorsement-featured-avatar--sm.endorsement-avatar-initials { font-size: 1.3rem; }
+
   .endorsements-grid {
     display: flex;
     flex-wrap: wrap;
@@ -1169,45 +1263,30 @@
     text-wrap: balance;
   }
 
-  /* ALSO ENDORSED BY */
-  .endorsements-list-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-weight: 600;
+  .endorsements-see-all {
+    text-align: center;
     margin-top: 3rem;
-    margin-bottom: 0.75rem;
   }
 
-  .endorsements-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem 2rem;
+  .endorsements-see-all .link-arrow {
+    justify-content: center;
     margin-top: 0;
-  }
-
-  .endorsement-list-item .endorsement-name,
-  .endorsement-list-item .endorsement-role {
-    text-align: left;
-  }
-
-  .endorsement-list-item .endorsement-role {
-    min-height: 0;
   }
 
   @media (max-width: 900px) {
     .endorsements-grid { max-width: 496px; gap: 2rem 1.25rem; }
     .endorsement-card { width: 152px; }
     .endorsement-photo { width: 84px; height: 84px; }
-    .endorsements-list { grid-template-columns: repeat(2, 1fr); }
+    .endorsement-photo.endorsement-avatar-initials { font-size: 1.6rem; }
   }
 
   @media (max-width: 600px) {
     .endorsements-grid { max-width: 288px; gap: 1.75rem 1rem; }
     .endorsement-card { width: 136px; }
     .endorsement-photo { width: 72px; height: 72px; }
-    .endorsements-list { grid-template-columns: 1fr; }
+    .endorsement-photo.endorsement-avatar-initials { font-size: 1.35rem; }
+    .endorsement-featured-primary { flex-direction: column; text-align: center; padding: 1.5rem; }
+    .endorsement-featured-card { flex-direction: column; text-align: center; }
   }
 </style>
 </head>
@@ -1223,8 +1302,8 @@
     <li><a href="#meet">About</a></li>
     <li><a href="#priorities">Platform</a></li>
     <li><a href="#in-action">Arielle in Action</a></li>
-    <li><a href="#endorsements">Endorsements</a></li>
-    <li><a href="/media">Media</a></li>
+    <li><a href="endorsements.html">Endorsements</a></li>
+    <li><a href="media.html">Media</a></li>
     <li><a href="https://arielleforoakland.us5.list-manage.com/subscribe?u=d10ad07b67ea7b4c77f9deee5&id=4426faff8c" target="_blank" rel="noopener">Get Involved</a></li>
     <li><a href="https://secure.actblue.com/donate/arielleforoakland" class="nav-cta" target="_blank" rel="noopener">Donate</a></li>
   </ul>
@@ -1523,11 +1602,11 @@
   <div class="container">
     <p class="section-label">Endorsements</p>
     <h2 class="section-title">Endorsed by Oakland Parents, Leaders &amp; Educators</h2>
+    <div class="endorsements-featured" id="endorsements-featured" style="display:none;"></div>
     <div class="endorsements-grid" id="endorsements-grid"></div>
-    <div>
-      <p class="endorsements-list-label" id="endorsements-list-label" style="display:none;">Also endorsed by</p>
-      <div class="endorsements-list" id="endorsements-list"></div>
-    </div>
+    <p class="endorsements-see-all">
+      <a href="endorsements.html" class="link-arrow">Read all endorsements <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </p>
   </div>
 </section>
 
@@ -1558,7 +1637,7 @@
   var SANITY_PROJECT_ID = 'syqwd058';
   var SANITY_DATASET = 'production';
   var SANITY_API_HOST = 'apicdn.sanity.io';
-  var GROQ_QUERY = '*[_type == "endorsement" && published == true] | order(featured desc, order asc, name asc){ name, role, featured, "photo": photo.asset->url, "hotspot": photo.hotspot }';
+  var GROQ_QUERY = '*[_type == "endorsement" && published == true] | order(order asc, name asc){ name, role, placement, quote, "photo": photo.asset->url, "hotspot": photo.hotspot }';
 
   function sanityImageUrl(photoUrl, hotspot, size) {
     var url = photoUrl + '?w=' + size + '&h=' + size + '&fit=crop&crop=focalpoint&auto=format';
@@ -1566,6 +1645,32 @@
       url += '&fp-x=' + hotspot.x + '&fp-y=' + hotspot.y;
     }
     return url;
+  }
+
+  function getInitials(name) {
+    var parts = (name || '').trim().split(/\s+/).filter(Boolean);
+    if (!parts.length) return '';
+    var initials = parts[0].charAt(0);
+    if (parts.length > 1) initials += parts[parts.length - 1].charAt(0);
+    return initials.toUpperCase();
+  }
+
+  function createAvatar(e, sizePx, sizeClasses) {
+    if (e.photo) {
+      var img = document.createElement('img');
+      img.className = sizeClasses.join(' ');
+      img.src = sanityImageUrl(e.photo, e.hotspot, sizePx);
+      img.loading = 'lazy';
+      img.alt = e.role ? (e.name + ', ' + e.role) : e.name;
+      return img;
+    }
+
+    var initials = document.createElement('div');
+    initials.className = sizeClasses.concat(['endorsement-avatar-initials']).join(' ');
+    initials.setAttribute('role', 'img');
+    initials.setAttribute('aria-label', e.name);
+    initials.textContent = getInitials(e.name);
+    return initials;
   }
 
   function appendNameRole(container, e) {
@@ -1582,42 +1687,83 @@
     }
   }
 
+  function buildFeaturedCard(e, isPrimary) {
+    var wrap = document.createElement('div');
+    wrap.className = isPrimary ? 'endorsement-featured-primary' : 'endorsement-featured-card';
+
+    var avatarClasses = isPrimary
+      ? ['endorsement-featured-avatar']
+      : ['endorsement-featured-avatar', 'endorsement-featured-avatar--sm'];
+    wrap.appendChild(createAvatar(e, isPrimary ? 240 : 128, avatarClasses));
+
+    var body = document.createElement('div');
+    var quote = document.createElement('p');
+    quote.className = 'endorsement-featured-quote';
+    quote.textContent = '“' + e.quote + '”';
+    body.appendChild(quote);
+
+    var name = document.createElement('p');
+    name.className = 'endorsement-featured-name';
+    name.textContent = e.name;
+    body.appendChild(name);
+
+    if (e.role) {
+      var role = document.createElement('p');
+      role.className = 'endorsement-featured-role';
+      role.textContent = e.role;
+      body.appendChild(role);
+    }
+
+    wrap.appendChild(body);
+    return wrap;
+  }
+
+  // Homepage shows a curated preview only: featured quotes + grid, capped at
+  // 3 featured. The full list (including "also endorsed by") lives on the
+  // standalone /endorsements page.
   function renderEndorsements(entries) {
     var section = document.getElementById('endorsements');
+    var featuredEl = document.getElementById('endorsements-featured');
     var gridEl = document.getElementById('endorsements-grid');
-    var listEl = document.getElementById('endorsements-list');
-    var listLabelEl = document.getElementById('endorsements-list-label');
 
-    var featured = entries.filter(function (e) { return e.featured && e.photo; });
-    var rest = entries.filter(function (e) { return !(e.featured && e.photo); });
+    var featuredCandidates = entries
+      .filter(function (e) { return e.placement === 'featured' && e.quote; })
+      .slice(0, 3);
 
-    featured.forEach(function (e) {
+    // Grid only shows placement:'grid' people, plus a 'featured' person
+    // missing a quote (a content gap, so they still show up somewhere).
+    // Anyone bumped by the 3-person homepage cap is left off the homepage
+    // entirely -- their quote still appears on the full /endorsements page.
+    var gridEntries = entries.filter(function (e) {
+      if (e.placement === 'grid') return true;
+      return e.placement === 'featured' && !e.quote;
+    });
+
+    if (featuredCandidates.length) {
+      featuredEl.appendChild(buildFeaturedCard(featuredCandidates[0], true));
+
+      var secondary = featuredCandidates.slice(1);
+      if (secondary.length) {
+        var secondaryWrap = document.createElement('div');
+        secondaryWrap.className = 'endorsement-featured-secondary';
+        secondary.forEach(function (e) {
+          secondaryWrap.appendChild(buildFeaturedCard(e, false));
+        });
+        featuredEl.appendChild(secondaryWrap);
+      }
+
+      featuredEl.style.display = '';
+    }
+
+    gridEntries.forEach(function (e) {
       var card = document.createElement('div');
       card.className = 'endorsement-card';
-
-      var img = document.createElement('img');
-      img.className = 'endorsement-photo';
-      img.src = sanityImageUrl(e.photo, e.hotspot, 240);
-      img.loading = 'lazy';
-      img.alt = e.role ? (e.name + ', ' + e.role) : e.name;
-      card.appendChild(img);
-
+      card.appendChild(createAvatar(e, 240, ['endorsement-photo']));
       appendNameRole(card, e);
       gridEl.appendChild(card);
     });
 
-    rest.forEach(function (e) {
-      var item = document.createElement('div');
-      item.className = 'endorsement-list-item';
-      appendNameRole(item, e);
-      listEl.appendChild(item);
-    });
-
-    if (rest.length && featured.length) {
-      listLabelEl.style.display = '';
-    }
-
-    if (!featured.length && !rest.length) {
+    if (!featuredCandidates.length && !gridEntries.length) {
       return false;
     }
 

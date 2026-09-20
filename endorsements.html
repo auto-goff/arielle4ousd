@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Media — Arielle Fleisher for OUSD District 2 School Board</title>
+<title>Endorsements — Arielle Fleisher for OUSD District 2 School Board</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -256,6 +256,213 @@
     .gallery-grid { grid-template-columns: 1fr; }
     .gallery-item img { height: 220px; }
   }
+
+  /* ENDORSEMENTS HERO */
+  .endorsements-hero {
+    padding-top: calc(64px + 4rem);
+    padding-bottom: 2rem;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .endorsements-hero p.intro {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #3a3830;
+    font-weight: 300;
+    max-width: 640px;
+  }
+
+  /* ENDORSEMENTS BODY */
+  .endorsements-body { padding-top: 4rem; }
+
+  .endorsements-featured {
+    margin: 0 auto 3rem;
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .endorsement-featured-primary {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    text-align: left;
+    padding: 2rem;
+    background: var(--cream);
+    border: 1px solid var(--border);
+  }
+
+  .endorsement-featured-secondary {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .endorsement-featured-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    text-align: left;
+    width: 100%;
+  }
+
+  .endorsement-featured-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+
+  .endorsement-featured-avatar--sm {
+    width: 64px;
+    height: 64px;
+  }
+
+  .endorsement-featured-quote {
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .endorsement-featured-primary .endorsement-featured-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+  }
+
+  .endorsement-featured-card .endorsement-featured-quote {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.95rem;
+  }
+
+  .endorsement-featured-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--ink);
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .endorsement-featured-role {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 300;
+    margin-top: 0.15rem;
+  }
+
+  /* AVATAR-INITIALS FALLBACK (no photo set) */
+  .endorsement-avatar-initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--oak);
+    color: var(--white);
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+  }
+
+  .endorsement-photo.endorsement-avatar-initials { font-size: 1.9rem; }
+  .endorsement-featured-avatar.endorsement-avatar-initials { font-size: 2.4rem; }
+  .endorsement-featured-avatar--sm.endorsement-avatar-initials { font-size: 1.3rem; }
+
+  .endorsements-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2.5rem 1.5rem;
+    max-width: 940px;
+    margin: 0 auto;
+  }
+
+  .endorsement-card {
+    width: 176px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .endorsement-photo {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 0.85rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+
+  .endorsement-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .endorsement-role {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.4;
+    margin-top: 0.2rem;
+    min-height: 3.4rem;
+    text-wrap: balance;
+  }
+
+  /* ALSO ENDORSED BY */
+  .endorsements-list-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-top: 3.5rem;
+    margin-bottom: 0.75rem;
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .endorsements-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem 2rem;
+    max-width: 940px;
+    margin: 0 auto;
+  }
+
+  .endorsement-list-item .endorsement-name,
+  .endorsement-list-item .endorsement-role {
+    text-align: left;
+  }
+
+  .endorsement-list-item .endorsement-role {
+    min-height: 0;
+  }
+
+  @media (max-width: 900px) {
+    .endorsements-grid { max-width: 496px; gap: 2rem 1.25rem; }
+    .endorsement-card { width: 152px; }
+    .endorsement-photo { width: 84px; height: 84px; }
+    .endorsement-photo.endorsement-avatar-initials { font-size: 1.6rem; }
+    .endorsements-list { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .endorsements-grid { max-width: 288px; gap: 1.75rem 1rem; }
+    .endorsement-card { width: 136px; }
+    .endorsement-photo { width: 72px; height: 72px; }
+    .endorsement-photo.endorsement-avatar-initials { font-size: 1.35rem; }
+    .endorsements-list { grid-template-columns: repeat(2, 1fr); }
+    .endorsement-featured-primary { flex-direction: column; text-align: center; padding: 1.5rem; }
+    .endorsement-featured-card { flex-direction: column; text-align: center; }
+  }
 </style>
 </head>
 <body>
@@ -270,8 +477,8 @@
     <li><a href="arielle-fleisher-campaign.html#meet">About</a></li>
     <li><a href="arielle-fleisher-campaign.html#priorities">Platform</a></li>
     <li><a href="arielle-fleisher-campaign.html#in-action">Arielle in Action</a></li>
-    <li><a href="endorsements.html">Endorsements</a></li>
-    <li><a href="media.html" class="active">Media</a></li>
+    <li><a href="endorsements.html" class="active">Endorsements</a></li>
+    <li><a href="media.html">Media</a></li>
     <li><a href="https://arielleforoakland.us5.list-manage.com/subscribe?u=d10ad07b67ea7b4c77f9deee5&id=4426faff8c" target="_blank" rel="noopener">Get Involved</a></li>
     <li><a href="https://secure.actblue.com/donate/arielleforoakland" class="nav-cta" target="_blank" rel="noopener">Donate</a></li>
   </ul>
@@ -297,65 +504,196 @@
 })();
 </script>
 
-<!-- MEDIA HERO -->
-<section class="media-hero">
+<!-- ENDORSEMENTS HERO -->
+<section class="endorsements-hero">
   <div class="container">
-    <p class="section-label">Media</p>
-    <h1 class="section-title">Photos &amp; Press Materials</h1>
-    <p class="intro">Welcome to Arielle's media page. Feel free to download and use these photos for press, social media, or campaign materials.</p>
+    <p class="section-label">Endorsements</p>
+    <h1 class="section-title">Endorsed by Oakland Parents, Leaders &amp; Educators</h1>
+    <p class="intro">The growing coalition of Oakland parents, educators, and community leaders backing Arielle for School Board.</p>
   </div>
 </section>
 
-<!-- GALLERY -->
-<section class="media-gallery">
+<!-- ENDORSEMENTS BODY -->
+<section class="endorsements-body" id="endorsements-body" style="display:none;">
   <div class="container">
-    <div class="gallery-grid">
-
-      <div class="gallery-item">
-        <img src="photos/web/1-arielle-with-kids.jpg" alt="Arielle Fleisher with kids" loading="lazy">
-        <div class="gallery-item-footer">
-          <span class="gallery-caption">Arielle with kids</span>
-          <a class="gallery-download" href="photos/web/1-arielle-with-kids.jpg" download="arielle-fleisher-1.jpg">Download</a>
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="photos/web/2-arielle-with-students.jpg" alt="Arielle Fleisher with students" loading="lazy">
-        <div class="gallery-item-footer">
-          <span class="gallery-caption">Arielle with students</span>
-          <a class="gallery-download" href="photos/web/2-arielle-with-students.jpg" download="arielle-fleisher-2.jpg">Download</a>
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="photos/web/3-headshot.jpg" alt="Arielle Fleisher headshot" loading="lazy">
-        <div class="gallery-item-footer">
-          <span class="gallery-caption">Headshot</span>
-          <a class="gallery-download" href="photos/web/3-headshot.jpg" download="arielle-fleisher-3.jpg">Download</a>
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="photos/web/4-canvassing.jpg" alt="Arielle Fleisher canvassing with volunteers" loading="lazy">
-        <div class="gallery-item-footer">
-          <span class="gallery-caption">Canvassing</span>
-          <a class="gallery-download" href="photos/web/4-canvassing.jpg" download="arielle-fleisher-4.jpg">Download</a>
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="photos/web/5-family-photo.jpg" alt="Arielle Fleisher family photo" loading="lazy">
-        <div class="gallery-item-footer">
-          <span class="gallery-caption">Family photo</span>
-          <a class="gallery-download" href="photos/web/5-family-photo.jpg" download="arielle-fleisher-5.jpg">Download</a>
-        </div>
-      </div>
-
+    <div class="endorsements-featured" id="endorsements-featured" style="display:none;"></div>
+    <div class="endorsements-grid" id="endorsements-grid"></div>
+    <div>
+      <p class="endorsements-list-label" id="endorsements-list-label" style="display:none;">Also endorsed by</p>
+      <div class="endorsements-list" id="endorsements-list"></div>
     </div>
-
-    <p class="gallery-more">Looking for more photos? <a href="https://drive.google.com/drive/folders/1IisvHWRGVQTCzt2kjC9R-Phzf7bo18bt" target="_blank" rel="noopener">Browse and download the full photo library on Google Drive</a>.</p>
   </div>
 </section>
+
+<script>
+(function () {
+  var SANITY_PROJECT_ID = 'syqwd058';
+  var SANITY_DATASET = 'production';
+  var SANITY_API_HOST = 'apicdn.sanity.io';
+  var GROQ_QUERY = '*[_type == "endorsement" && published == true] | order(order asc, name asc){ name, role, placement, quote, "photo": photo.asset->url, "hotspot": photo.hotspot }';
+
+  function sanityImageUrl(photoUrl, hotspot, size) {
+    var url = photoUrl + '?w=' + size + '&h=' + size + '&fit=crop&crop=focalpoint&auto=format';
+    if (hotspot && typeof hotspot.x === 'number' && typeof hotspot.y === 'number') {
+      url += '&fp-x=' + hotspot.x + '&fp-y=' + hotspot.y;
+    }
+    return url;
+  }
+
+  function getInitials(name) {
+    var parts = (name || '').trim().split(/\s+/).filter(Boolean);
+    if (!parts.length) return '';
+    var initials = parts[0].charAt(0);
+    if (parts.length > 1) initials += parts[parts.length - 1].charAt(0);
+    return initials.toUpperCase();
+  }
+
+  function createAvatar(e, sizePx, sizeClasses) {
+    if (e.photo) {
+      var img = document.createElement('img');
+      img.className = sizeClasses.join(' ');
+      img.src = sanityImageUrl(e.photo, e.hotspot, sizePx);
+      img.loading = 'lazy';
+      img.alt = e.role ? (e.name + ', ' + e.role) : e.name;
+      return img;
+    }
+
+    var initials = document.createElement('div');
+    initials.className = sizeClasses.concat(['endorsement-avatar-initials']).join(' ');
+    initials.setAttribute('role', 'img');
+    initials.setAttribute('aria-label', e.name);
+    initials.textContent = getInitials(e.name);
+    return initials;
+  }
+
+  function appendNameRole(container, e) {
+    var name = document.createElement('p');
+    name.className = 'endorsement-name';
+    name.textContent = e.name;
+    container.appendChild(name);
+
+    if (e.role) {
+      var role = document.createElement('p');
+      role.className = 'endorsement-role';
+      role.textContent = e.role;
+      container.appendChild(role);
+    }
+  }
+
+  function buildFeaturedCard(e, isPrimary) {
+    var wrap = document.createElement('div');
+    wrap.className = isPrimary ? 'endorsement-featured-primary' : 'endorsement-featured-card';
+
+    var avatarClasses = isPrimary
+      ? ['endorsement-featured-avatar']
+      : ['endorsement-featured-avatar', 'endorsement-featured-avatar--sm'];
+    wrap.appendChild(createAvatar(e, isPrimary ? 240 : 128, avatarClasses));
+
+    var body = document.createElement('div');
+    var quote = document.createElement('p');
+    quote.className = 'endorsement-featured-quote';
+    quote.textContent = '\u201C' + e.quote + '\u201D';
+    body.appendChild(quote);
+
+    var name = document.createElement('p');
+    name.className = 'endorsement-featured-name';
+    name.textContent = e.name;
+    body.appendChild(name);
+
+    if (e.role) {
+      var role = document.createElement('p');
+      role.className = 'endorsement-featured-role';
+      role.textContent = e.role;
+      body.appendChild(role);
+    }
+
+    wrap.appendChild(body);
+    return wrap;
+  }
+
+  // This page is comprehensive: every featured quote is shown (no 3-person
+  // cap -- that cap is a homepage-preview constraint only), plus the full
+  // grid and the complete "also endorsed by" list.
+  function renderEndorsements(entries) {
+    var bodyEl = document.getElementById('endorsements-body');
+    var featuredEl = document.getElementById('endorsements-featured');
+    var gridEl = document.getElementById('endorsements-grid');
+    var listEl = document.getElementById('endorsements-list');
+    var listLabelEl = document.getElementById('endorsements-list-label');
+
+    var featuredCandidates = entries.filter(function (e) {
+      return e.placement === 'featured' && e.quote;
+    });
+
+    // Anyone shown in the featured block above is left out of the grid. A
+    // 'featured' entry only falls back to the grid if it has no quote.
+    var gridEntries = entries.filter(function (e) {
+      if (e.placement === 'grid') return true;
+      return e.placement === 'featured' && featuredCandidates.indexOf(e) === -1;
+    });
+
+    var listEntries = entries.filter(function (e) { return e.placement === 'list'; });
+
+    if (featuredCandidates.length) {
+      featuredEl.appendChild(buildFeaturedCard(featuredCandidates[0], true));
+
+      var secondary = featuredCandidates.slice(1);
+      if (secondary.length) {
+        var secondaryWrap = document.createElement('div');
+        secondaryWrap.className = 'endorsement-featured-secondary';
+        secondary.forEach(function (e) {
+          secondaryWrap.appendChild(buildFeaturedCard(e, false));
+        });
+        featuredEl.appendChild(secondaryWrap);
+      }
+
+      featuredEl.style.display = '';
+    }
+
+    gridEntries.forEach(function (e) {
+      var card = document.createElement('div');
+      card.className = 'endorsement-card';
+      card.appendChild(createAvatar(e, 240, ['endorsement-photo']));
+      appendNameRole(card, e);
+      gridEl.appendChild(card);
+    });
+
+    listEntries.forEach(function (e) {
+      var item = document.createElement('div');
+      item.className = 'endorsement-list-item';
+      appendNameRole(item, e);
+      listEl.appendChild(item);
+    });
+
+    if (listEntries.length && (gridEntries.length || featuredCandidates.length)) {
+      listLabelEl.style.display = '';
+    }
+
+    bodyEl.style.display = '';
+  }
+
+  var endpoint = 'https://' + SANITY_PROJECT_ID + '.' + SANITY_API_HOST + '/v2024-01-01/data/query/' +
+    SANITY_DATASET + '?query=' + encodeURIComponent(GROQ_QUERY);
+
+  fetch(endpoint, { cache: 'no-store' })
+    .then(function (res) {
+      if (!res.ok) {
+        throw new Error('Sanity fetch failed with status ' + res.status);
+      }
+      return res.json();
+    })
+    .then(function (data) {
+      var entries = (data && data.result) || [];
+      if (!entries.length) {
+        return;
+      }
+      renderEndorsements(entries);
+    })
+    .catch(function (err) {
+      console.error('Failed to load endorsements:', err);
+    });
+})();
+</script>
 
 <footer>
   <p>Paid for by Arielle Fleisher for Oakland School Board 2026, FPPC No. 1490303, 4900 Shattuck Ave. #22746, Oakland, CA 94609 · <a href="mailto:arielle@arielleforoakland.com">arielle@arielleforoakland.com</a></p>

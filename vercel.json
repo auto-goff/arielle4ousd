@@ -1,6 +1,7 @@
 {
   "rewrites": [
     { "source": "/", "destination": "/arielle-fleisher-campaign.html" },
-    { "source": "/media", "destination": "/media.html" }
+    { "source": "/media", "destination": "/media.html" },
+    { "source": "/endorsements", "destination": "/endorsements.html" }
   ]
 }

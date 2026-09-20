@@ -27,11 +27,38 @@ export default {
         'Optional. A headshot works best. Any size is fine — it gets resized automatically.',
     },
     {
-      name: 'featured',
-      title: 'Show photo in the top grid',
-      type: 'boolean',
-      initialValue: false,
-      description: 'Leave off to appear in the plain text list below the grid.',
+      name: 'placement',
+      title: 'Placement',
+      type: 'string',
+      initialValue: 'list',
+      options: {
+        list: [
+          {title: 'Name only (Also endorsed by)', value: 'list'},
+          {title: 'Photo in grid', value: 'grid'},
+          {title: 'Photo + quote on home page', value: 'featured'},
+        ],
+        layout: 'radio',
+      },
+      validation: (Rule) =>
+        Rule.custom((placement, context) => {
+          if ((placement === 'grid' || placement === 'featured') && !context.document?.photo) {
+            return 'This placement shows a photo, but no photo is set.'
+          }
+          return true
+        }).warning(),
+    },
+    {
+      name: 'quote',
+      title: 'Quote',
+      type: 'text',
+      rows: 4,
+      validation: (Rule) =>
+        Rule.custom((quote, context) => {
+          if (context.document?.placement === 'featured' && !quote) {
+            return 'Featured endorsements usually include a quote.'
+          }
+          return true
+        }).warning(),
     },
     {
       name: 'published',

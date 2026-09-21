@@ -24,41 +24,26 @@ export default {
         hotspot: true,
       },
       description:
-        'Optional. A headshot works best. Any size is fine — it gets resized automatically.',
-    },
-    {
-      name: 'placement',
-      title: 'Placement',
-      type: 'string',
-      initialValue: 'list',
-      options: {
-        list: [
-          {title: 'Name only (Also endorsed by)', value: 'list'},
-          {title: 'Photo in grid', value: 'grid'},
-          {title: 'Photo + quote on home page', value: 'featured'},
-        ],
-        layout: 'radio',
-      },
-      validation: (Rule) =>
-        Rule.custom((placement, context) => {
-          if ((placement === 'grid' || placement === 'featured') && !context.document?.photo) {
-            return 'This placement shows a photo, but no photo is set.'
-          }
-          return true
-        }).warning(),
+        'Optional. A headshot works best. Any size is fine — it gets resized automatically. ' +
+        'Adding a photo (with no quote) shows this person in the photo grid instead of the plain name list.',
     },
     {
       name: 'quote',
       title: 'Quote',
       type: 'text',
       rows: 4,
-      validation: (Rule) =>
-        Rule.custom((quote, context) => {
-          if (context.document?.placement === 'featured' && !quote) {
-            return 'Featured endorsements usually include a quote.'
-          }
-          return true
-        }).warning(),
+      description:
+        'Optional. Adding a quote shows this person with their photo (or initials, if no photo) and ' +
+        'the quote, above everyone who only has a photo or just a name.',
+    },
+    {
+      name: 'onHomepage',
+      title: 'Show on homepage',
+      type: 'boolean',
+      initialValue: false,
+      description:
+        'Everyone appears automatically on the full Endorsements page, grouped by quote / photo / name ' +
+        'only. Check this to ALSO feature them on the homepage.',
     },
     {
       name: 'published',
@@ -71,7 +56,9 @@ export default {
       name: 'order',
       title: 'Sort order',
       type: 'number',
-      description: 'Lower numbers appear first. Leave blank to sort alphabetically.',
+      description:
+        'Lower numbers appear first within their group (quote / photo / name only). Leave blank to sort ' +
+        'alphabetically.',
     },
   ],
   preview: {

@@ -530,7 +530,16 @@
   var SANITY_PROJECT_ID = 'syqwd058';
   var SANITY_DATASET = 'production';
   var SANITY_API_HOST = 'apicdn.sanity.io';
-  var GROQ_QUERY = '*[_type == "endorsement" && published == true] | order(order asc, name asc){ name, role, placement, quote, "photo": photo.asset->url, "hotspot": photo.hotspot }';
+  var GROQ_QUERY = '*[_type == "endorsement" && published == true] | order(order asc, name asc){ name, role, quote, "photo": photo.asset->url, "hotspot": photo.hotspot }';
+
+  // Which tier someone shows in is derived entirely from what's filled in --
+  // a quote gets top billing, a photo (with no quote) goes in the grid,
+  // and everyone else is name-only.
+  function endorsementTier(e) {
+    if (e.quote) return 'quote';
+    if (e.photo) return 'picture';
+    return 'name';
+  }
 
   function sanityImageUrl(photoUrl, hotspot, size) {
     var url = photoUrl + '?w=' + size + '&h=' + size + '&fit=crop&crop=focalpoint&auto=format';
@@ -611,9 +620,8 @@
     return wrap;
   }
 
-  // This page is comprehensive: every featured quote is shown (no 3-person
-  // cap -- that cap is a homepage-preview constraint only), plus the full
-  // grid and the complete "also endorsed by" list.
+  // This page is comprehensive: everyone shows up, grouped quote-tier
+  // first, then picture-tier, then name-only last.
   function renderEndorsements(entries) {
     var bodyEl = document.getElementById('endorsements-body');
     var featuredEl = document.getElementById('endorsements-featured');
@@ -621,18 +629,9 @@
     var listEl = document.getElementById('endorsements-list');
     var listLabelEl = document.getElementById('endorsements-list-label');
 
-    var featuredCandidates = entries.filter(function (e) {
-      return e.placement === 'featured' && e.quote;
-    });
-
-    // Anyone shown in the featured block above is left out of the grid. A
-    // 'featured' entry only falls back to the grid if it has no quote.
-    var gridEntries = entries.filter(function (e) {
-      if (e.placement === 'grid') return true;
-      return e.placement === 'featured' && featuredCandidates.indexOf(e) === -1;
-    });
-
-    var listEntries = entries.filter(function (e) { return e.placement === 'list'; });
+    var featuredCandidates = entries.filter(function (e) { return endorsementTier(e) === 'quote'; });
+    var gridEntries = entries.filter(function (e) { return endorsementTier(e) === 'picture'; });
+    var listEntries = entries.filter(function (e) { return endorsementTier(e) === 'name'; });
 
     if (featuredCandidates.length) {
       featuredEl.appendChild(buildFeaturedCard(featuredCandidates[0], true));

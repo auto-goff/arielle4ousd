@@ -1273,11 +1273,43 @@
     margin-top: 0;
   }
 
+  /* Rare: someone marked "Show on homepage" with no photo and no quote */
+  .endorsements-list-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-top: 3rem;
+    margin-bottom: 0.75rem;
+    max-width: 776px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .endorsements-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem 2rem;
+    max-width: 776px;
+    margin: 0 auto;
+  }
+
+  .endorsement-list-item .endorsement-name,
+  .endorsement-list-item .endorsement-role {
+    text-align: left;
+  }
+
+  .endorsement-list-item .endorsement-role {
+    min-height: 0;
+  }
+
   @media (max-width: 900px) {
     .endorsements-grid { max-width: 496px; gap: 2rem 1.25rem; }
     .endorsement-card { width: 152px; }
     .endorsement-photo { width: 84px; height: 84px; }
     .endorsement-photo.endorsement-avatar-initials { font-size: 1.6rem; }
+    .endorsements-list { grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 600px) {
@@ -1285,6 +1317,7 @@
     .endorsement-card { width: 136px; }
     .endorsement-photo { width: 72px; height: 72px; }
     .endorsement-photo.endorsement-avatar-initials { font-size: 1.35rem; }
+    .endorsements-list { grid-template-columns: 1fr; }
     .endorsement-featured-primary { flex-direction: column; text-align: center; padding: 1.5rem; }
     .endorsement-featured-card { flex-direction: column; text-align: center; }
   }
@@ -1604,6 +1637,10 @@
     <h2 class="section-title">Endorsed by Oakland Parents, Leaders &amp; Educators</h2>
     <div class="endorsements-featured" id="endorsements-featured" style="display:none;"></div>
     <div class="endorsements-grid" id="endorsements-grid"></div>
+    <div>
+      <p class="endorsements-list-label" id="endorsements-list-label" style="display:none;">Also endorsed by</p>
+      <div class="endorsements-list" id="endorsements-list"></div>
+    </div>
     <p class="endorsements-see-all">
       <a href="endorsements.html" class="link-arrow">Read all endorsements <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </p>
@@ -1637,7 +1674,16 @@
   var SANITY_PROJECT_ID = 'syqwd058';
   var SANITY_DATASET = 'production';
   var SANITY_API_HOST = 'apicdn.sanity.io';
-  var GROQ_QUERY = '*[_type == "endorsement" && published == true] | order(order asc, name asc){ name, role, placement, quote, "photo": photo.asset->url, "hotspot": photo.hotspot }';
+  var GROQ_QUERY = '*[_type == "endorsement" && published == true] | order(order asc, name asc){ name, role, quote, onHomepage, "photo": photo.asset->url, "hotspot": photo.hotspot }';
+
+  // Which tier someone shows in is derived entirely from what's filled in --
+  // a quote gets top billing, a photo (with no quote) goes in the grid,
+  // and everyone else is name-only.
+  function endorsementTier(e) {
+    if (e.quote) return 'quote';
+    if (e.photo) return 'picture';
+    return 'name';
+  }
 
   function sanityImageUrl(photoUrl, hotspot, size) {
     var url = photoUrl + '?w=' + size + '&h=' + size + '&fit=crop&crop=focalpoint&auto=format';
@@ -1718,31 +1764,25 @@
     return wrap;
   }
 
-  // Homepage shows a curated preview only: featured quotes + grid, capped at
-  // 3 featured. The full list (including "also endorsed by") lives on the
-  // standalone /endorsements page.
+  // Homepage shows only whoever has "Show on homepage" checked, grouped
+  // quote-tier first, then picture-tier, then name-only last. Everyone
+  // (checked or not) still shows up on the full /endorsements page.
   function renderEndorsements(entries) {
     var section = document.getElementById('endorsements');
     var featuredEl = document.getElementById('endorsements-featured');
     var gridEl = document.getElementById('endorsements-grid');
+    var listEl = document.getElementById('endorsements-list');
+    var listLabelEl = document.getElementById('endorsements-list-label');
 
-    var featuredCandidates = entries
-      .filter(function (e) { return e.placement === 'featured' && e.quote; })
-      .slice(0, 3);
+    var onHome = entries.filter(function (e) { return e.onHomepage; });
+    var quoteEntries = onHome.filter(function (e) { return endorsementTier(e) === 'quote'; });
+    var pictureEntries = onHome.filter(function (e) { return endorsementTier(e) === 'picture'; });
+    var nameEntries = onHome.filter(function (e) { return endorsementTier(e) === 'name'; });
 
-    // Grid only shows placement:'grid' people, plus a 'featured' person
-    // missing a quote (a content gap, so they still show up somewhere).
-    // Anyone bumped by the 3-person homepage cap is left off the homepage
-    // entirely -- their quote still appears on the full /endorsements page.
-    var gridEntries = entries.filter(function (e) {
-      if (e.placement === 'grid') return true;
-      return e.placement === 'featured' && !e.quote;
-    });
+    if (quoteEntries.length) {
+      featuredEl.appendChild(buildFeaturedCard(quoteEntries[0], true));
 
-    if (featuredCandidates.length) {
-      featuredEl.appendChild(buildFeaturedCard(featuredCandidates[0], true));
-
-      var secondary = featuredCandidates.slice(1);
+      var secondary = quoteEntries.slice(1);
       if (secondary.length) {
         var secondaryWrap = document.createElement('div');
         secondaryWrap.className = 'endorsement-featured-secondary';
@@ -1755,7 +1795,7 @@
       featuredEl.style.display = '';
     }
 
-    gridEntries.forEach(function (e) {
+    pictureEntries.forEach(function (e) {
       var card = document.createElement('div');
       card.className = 'endorsement-card';
       card.appendChild(createAvatar(e, 240, ['endorsement-photo']));
@@ -1763,7 +1803,21 @@
       gridEl.appendChild(card);
     });
 
-    if (!featuredCandidates.length && !gridEntries.length) {
+    // Rare in practice -- someone would need "Show on homepage" checked
+    // with neither a photo nor a quote -- but shown here so the checkbox
+    // never silently does nothing.
+    nameEntries.forEach(function (e) {
+      var item = document.createElement('div');
+      item.className = 'endorsement-list-item';
+      appendNameRole(item, e);
+      listEl.appendChild(item);
+    });
+
+    if (nameEntries.length) {
+      listLabelEl.style.display = '';
+    }
+
+    if (!quoteEntries.length && !pictureEntries.length && !nameEntries.length) {
       return false;
     }
 

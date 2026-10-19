@@ -638,9 +638,12 @@
     var listEntries = entries.filter(function (e) { return endorsementTier(e) === 'name'; });
 
     if (featuredCandidates.length) {
-      featuredEl.appendChild(buildFeaturedCard(featuredCandidates[0], true));
+      // The first two quotes both get the large, top-billing card.
+      featuredCandidates.slice(0, 2).forEach(function (e) {
+        featuredEl.appendChild(buildFeaturedCard(e, true));
+      });
 
-      var secondary = featuredCandidates.slice(1);
+      var secondary = featuredCandidates.slice(2);
       if (secondary.length) {
         var secondaryWrap = document.createElement('div');
         secondaryWrap.className = 'endorsement-featured-secondary';

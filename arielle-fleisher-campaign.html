@@ -1789,9 +1789,12 @@
     var nameEntries = onHome.filter(function (e) { return endorsementTier(e) === 'name'; });
 
     if (quoteEntries.length) {
-      featuredEl.appendChild(buildFeaturedCard(quoteEntries[0], true));
+      // The first two quotes both get the large, top-billing card.
+      quoteEntries.slice(0, 2).forEach(function (e) {
+        featuredEl.appendChild(buildFeaturedCard(e, true));
+      });
 
-      var secondary = quoteEntries.slice(1);
+      var secondary = quoteEntries.slice(2);
       if (secondary.length) {
         var secondaryWrap = document.createElement('div');
         secondaryWrap.className = 'endorsement-featured-secondary';
